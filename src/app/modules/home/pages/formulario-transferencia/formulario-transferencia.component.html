@@ -1,0 +1,63 @@
+<div class="container py-5">
+    <app-form-container>
+        <div class="card-title">
+            <h1>Registrar Transferencia</h1>
+            <p class="text-black-50">Completa los campos para registrar una transferencia</p>
+        </div>
+        <hr />
+        <fieldset>
+            <form [formGroup]="transferenciaForm" (ngSubmit)="registrarTransferencia()">
+                <div class="form-group mb-3">
+                    <label class="d-block">
+                        <select class="form-control" formControlName="originAccountId">
+                            <option value="" disabled>Selecciona una cuenta de origen</option>
+                            <option [value]="account.id" *ngFor="let account of accountList">{{ account.name }}</option>
+                        </select>
+                    </label>
+                    <p *ngIf="transferenciaForm.get('originAccountId')?.invalid && transferenciaForm.get('originAccountId')?.touched" class="text-danger">
+                        Debes seleccionar una cuenta de origen.
+                    </p>
+                </div>
+                <div class="form-group mb-3">
+                    <label class="d-block">
+                        <select class="form-control" formControlName="destinationAccountId">
+                            <option value="" disabled>Selecciona una cuenta de destino</option>
+                            <option [value]="account.id" *ngFor="let account of accountList">{{ account.name }}</option>
+                        </select>
+                    </label>
+                    <p *ngIf="transferenciaForm.get('destinationAccountId')?.invalid && transferenciaForm.get('destinationAccountId')?.touched" class="text-danger">
+                        Debes seleccionar una cuenta de destino.
+                    </p>
+                </div>
+                <div class="form-group mb-3">
+                    <label class="d-block">
+                        <input type="number" class="form-control" placeholder="Monto" formControlName="amount" />
+                    </label>
+                    <p *ngIf="transferenciaForm.get('amount')?.invalid && transferenciaForm.get('amount')?.touched" class="text-danger">
+                        El monto es requerido y debe ser mayor a 0.
+                    </p>
+                </div>
+                <div class="form-group mb-3">
+                    <label class="d-block">
+                        <input type="date" class="form-control" placeholder="Fecha" formControlName="date" [max]="getMaxDate()">
+                    </label>
+                    <p *ngIf="transferenciaForm.get('date')?.invalid && transferenciaForm.get('date')?.touched" class="text-danger">
+                        La fecha es requerida.
+                    </p>
+                </div>
+                
+                <div class="form-group">
+                    <p *ngIf="showValidationAlert" class="text-danger">Debes completar todos los campos correctamente.</p>
+                    <div class="btn-group float-end">
+                        <button type="submit" class="btn-guardar btn btn-primary btn-raised">
+                            <span>Guardar</span>
+                        </button>
+                        <button type="button" class="btn btn-secondary" (click)="cancelarRegistro()">
+                            <span>Cancelar</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </fieldset>
+    </app-form-container>
+</div>

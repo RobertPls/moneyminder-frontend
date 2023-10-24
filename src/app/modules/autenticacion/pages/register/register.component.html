@@ -1,0 +1,55 @@
+<div class="container py-5">
+    <app-form-container>
+        <div class="card-title">
+            <h1>Registro</h1>
+            <p class="text-black-50">Crea una cuenta ingresando tus datos.</p>
+        </div>
+        <hr>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" #registerFormRef>
+            <div class="form-group mb-3">
+                <label class="d-block">
+                    <input type="text" class="form-control" placeholder="Nombre de usuario" formControlName="username">
+                </label>
+                <p *ngIf="registerForm.get('username')!.invalid" class="text-danger">
+                    Nombre de usuario es requerido.
+                </p>
+            </div>
+            <div class="form-group mb-3">
+                <label class="d-block">
+                    <input type="text" class="form-control" placeholder="Nombre" formControlName="firstName">
+                </label>
+                <p *ngIf="registerForm.get('firstName')!.invalid" class="text-danger">
+                    Nombre es requerido.
+                </p>
+            </div>
+            <div class="form-group mb-3">
+                <label class="d-block">
+                    <input type="text" class="form-control" placeholder="Apellido" formControlName="lastName">
+                </label>
+                <p *ngIf="registerForm.get('lastName')!.invalid" class="text-danger">
+                    Apellido es requerido.
+                </p>
+            </div>
+            <div class="form-group mb-3">
+                <label class="d-block">
+                    <input type="email" class="form-control" placeholder="Email" formControlName="email">
+                </label>
+                <p *ngIf="registerForm.get('email')!.invalid" class="text-danger">
+                    Email es requerido y debe ser válido.
+                </p>
+            </div>
+            <div class="form-group mb-3">
+                <label class="d-block">
+                    <input type="password" name="password" autocomplete="on" class="form-control" placeholder="Contraseña" formControlName="password">
+                </label>
+                <p *ngIf="registerForm.get('password')!.invalid" class="text-danger">
+                    Contraseña es requerida y debe tener al menos 8 caracteres incluyendo numeros.
+                </p>
+            </div>
+            <div class="form-group">
+                <p *ngIf="showValidationAlert" class="text-danger">{{ message }}</p>
+                <button type="submit" class="btn-ingresar btn btn-primary btn-block btn-raised">Registrarse</button>
+            </div>
+        </form>
+    </app-form-container>
+</div>

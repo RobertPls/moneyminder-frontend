@@ -1,0 +1,46 @@
+.card {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.card-title {
+    font-size: 24px;
+}
+
+.list-group {
+    list-style: none;
+    padding: 0;
+}
+
+.list-group-item {
+    cursor: pointer;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+}
+
+.list-group-item:hover {
+    background-color: #f9f9f9;
+}
+
+.list-group-item.selected {
+    border: 1px solid blue;
+    background-color: #e6e6ff;
+    color: blue;
+}
+
+.fab-button {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    font-size: 32px; /* Tamaño más grande */
+    width: 64px; /* Ancho y alto iguales para hacerlo redondo */
+    height: 64px;
+    border-radius: 50%;
+}
+
+.list {
+    max-height: 20vh; /* Establece la altura máxima que desees */
+    overflow-y: auto; /* Agrega una barra de desplazamiento vertical cuando sea necesario */
+}

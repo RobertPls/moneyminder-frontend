@@ -1,0 +1,48 @@
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h2>Balance por Fechas</h2>
+                        </div>
+                        <hr />
+
+                        <div class="text-center">
+                            <p class="mb-2">Ingresos: {{ balance?.income }}</p>
+                            <p class="mb-2">Gastos: {{ balance?.outcome }}</p>
+                            <p class="mb-2">Saldo: {{ balance?.balance }}</p>
+                            
+                        </div>
+
+                        <form [formGroup]="balanceFechaForm" (ngSubmit)="consultarBalancePorFechas()">
+                            <div class="form-group row">
+                                <div class="col-6">
+                                    <label for="fechaDesde">Fecha Desde:</label>
+                                    <input
+                                        type="date"
+                                        class="form-control"
+                                        id="fechaDesde"
+                                        formControlName="fechaDesde"
+                                    />
+                                </div>
+                                <div class="col-6">
+                                    <label for="fechaHasta">Fecha Hasta:</label>
+                                    <input
+                                        type="date"
+                                        class="form-control"
+                                        id="fechaHasta"
+                                        formControlName="fechaHasta"
+                                    />
+                                </div>
+                            </div>
+
+                            <button class="btn btn-primary mt-3" type="submit">Consultar</button>
+                        </form>
+
+                        <p *ngIf="alert" class="text-danger">Las fechas no son válidas.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+

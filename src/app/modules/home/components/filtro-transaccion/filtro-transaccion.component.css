@@ -1,0 +1,4 @@
+.list {
+    max-height: 20vh; /* Establece la altura máxima que desees */
+    overflow-y: auto; /* Agrega una barra de desplazamiento vertical cuando sea necesario */
+}

@@ -1,0 +1,68 @@
+<div class="row">
+    <div class="col-12">
+
+
+        <div class="card">
+            <div class="card-body">
+
+        <form [formGroup]="balanceFechaForm" (ngSubmit)="consultarBalancePorFechas()">
+            <div class="form-group mb-3">
+                <label class="d-block">
+                    <input type="date" class="form-control" placeholder="Fecha Desde" formControlName="fechaDesde" />
+                </label>
+
+            </div>
+            <div class="form-group mb-3">
+                <label class="d-block">
+                    <input type="date" class="form-control" placeholder="Fecha Hasta" formControlName="fechaHasta" />
+                </label>
+
+            </div>
+            <div class="form-group mb-3">
+                <label class="d-block">
+                    <select class="form-control" formControlName="accountId">
+                        <option value="" disabled>Selecciona una cuenta</option>
+                        <option [value]="account.id" *ngFor="let account of accountList">{{ account.name }}</option>
+                    </select>
+                </label>
+
+            </div>
+            <div class="form-group mb-3">
+                <label class="d-block">
+                    <select class="form-control" formControlName="categoryId">
+                        <option value="" disabled>Selecciona una categoría</option>
+                        <option [value]="category.id" *ngFor="let category of categoryList">{{ category.name }}</option>
+                    </select>
+                </label>
+
+            </div>
+            <div class="form-group">
+                <p *ngIf="alert" class="text-danger">La fecha desde no puede ser mayor o igual a la fecha hasta.</p>
+                <button type="submit" class="btn-buscar btn btn-primary btn-raised">
+                    <span>Buscar</span>
+                </button>
+            </div>
+        </form>
+            </div>
+        </div>
+
+
+    <div class="list">
+        <ul class="list-group">
+            <li
+            class="list-group-item d-flex justify-content-between align-items-center"
+            *ngFor="let transaction of transactionList"
+            >
+            <div class="transaction-details">
+                <h2 class="transaction-ammount">Bs. {{ transaction.amount }}</h2>
+                <p class="transaction-type">Tipo: {{ transaction.type.toString() === "Income" ? "Ingreso" : "Gasto" }}</p>
+                <p class="transaction-date">Fecha: {{ transaction.date }}</p>
+                <p class="transaction-description">Descripcion: {{ transaction.description }}</p>
+                <p class="transaction-cuenta" *ngIf="transaction.relatedTransaction!==null">Cuenta Relacionada: {{ transaction.relatedTransaction }}</p>
+    
+            </div>
+            </li>
+        </ul>
+    </div>
+</div>
+</div>

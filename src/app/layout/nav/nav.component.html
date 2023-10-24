@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-lg navbar-dark py-4">
+    <div class="container justify-content-center ">
+        <div class="d-flex flex-column flex-lg-row align-items-lg-center">
+            <a class="navbar-brand order-lg-1" href="#">
+                <img src="../../../assets/iconos/logo.png" alt="Logo" class="logo-img">
+            </a>
+            <h1 class="navbar-brand order-lg-2 mx-lg-3 mb-lg-0">MoneyMinder</h1>
+            <button class="navbar-toggler order-lg-3" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+
+
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item" *ngIf="!authService.isLoggedIn()">
+                    <a class="nav-link" [routerLink]="['/autenticacion/login']" routerLinkActive="active">Iniciar
+                        Sesion</a>
+                </li>
+                <li *ngIf="authService.isLoggedIn()" class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Perfil
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li class="btn-logout">
+                            <a class="dropdown-item" (click)="logout()">Cerrar sesión</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

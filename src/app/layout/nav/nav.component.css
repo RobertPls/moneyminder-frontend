@@ -1,0 +1,25 @@
+.navbar{
+    background-color: var(--color-primary);
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.logo-img {
+  width: 60px; 
+  height: auto; 
+}
+
+.btn-logout:hover{
+  cursor: pointer;
+}
+
+@media (max-width: 991px) { 
+  a,
+  h1 {
+      margin: auto;
+  }
+}

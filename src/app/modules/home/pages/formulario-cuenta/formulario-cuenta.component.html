@@ -1,0 +1,41 @@
+<div class="container py-5">
+    <app-form-container>
+        <div class="card-title">
+            <h1>Crear Cuenta</h1>
+            <p class="text-black-50">Completa los campos para crear una nueva cuenta.</p>
+        </div>
+        <hr />
+        <fieldset>
+            <form [formGroup]="cuentaForm" (ngSubmit)="registrarCuenta()">
+                <div class="form-group mb-3">
+                    <label class="d-block">
+                        <input type="text" class="form-control" placeholder="Nombre" formControlName="name" />
+                    </label>
+                    <p *ngIf="cuentaForm.get('name')?.invalid && cuentaForm.get('name')?.touched" class="text-danger">
+                        El nombre es requerido.
+                    </p>
+                </div>
+                <div class="form-group mb-3">
+                    <label class="d-block">
+                        <textarea class="form-control" placeholder="Descripción" formControlName="description"></textarea>
+                    </label>
+                    <p *ngIf="cuentaForm.get('description')?.invalid && cuentaForm.get('description')?.touched" class="text-danger">
+                        La descripción es requerida.
+                    </p>
+                </div>
+                
+                <div class="form-group">
+                    <p *ngIf="showValidationAlert" class="text-danger">Debes completar todos los campos correctamente.</p>
+                    <div class="btn-group float-end">
+                        <button type="submit" class="btn-guardar btn btn-primary btn-raised">
+                            <span>Guardar</span>
+                        </button>
+                        <button type="button" class="btn btn-secondary" (click)="cancelarRegistro()">
+                            <span>Cancelar</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </fieldset>
+    </app-form-container>
+</div>

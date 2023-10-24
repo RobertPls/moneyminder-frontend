@@ -1,0 +1,83 @@
+<div class="container py-5">
+    <app-form-container>
+        <div class="card-title">
+            <h1 >Registrar Transacción</h1>
+            <p class="text-black-50">Completa los campos para registrar una transacción</p>
+        </div>
+        <hr />
+        <fieldset>
+            <form [formGroup]="transaccionForm" (ngSubmit)="registrarTransaccion()">
+                <div class="form-group mb-3">
+                    <label class="d-block">
+                        <input type="number" class="form-control" placeholder="Monto" formControlName="amount" />
+                    </label>
+                    <p *ngIf="transaccionForm.get('amount')?.invalid && transaccionForm.get('amount')?.touched" class="text-danger">
+                        El monto es requerido y debe ser mayor a 0.
+                    </p>
+                </div>
+                <div class="form-group mb-3">
+                    <label class="d-block">
+                        <input type="date" class="form-control" placeholder="Fecha" formControlName="date" [max]="getMaxDate()">
+                    </label>
+                    <p *ngIf="transaccionForm.get('date')?.invalid && transaccionForm.get('date')?.touched" class="text-danger">
+                        La fecha es requerida.
+                    </p>
+                </div>
+                <div class="form-group mb-3">
+                    <label class="d-block">
+                        <select class="form-control" formControlName="type">
+                            <option value="0">Ingreso</option>
+                            <option value="1">Gasto</option>
+                        </select>
+                    </label>
+                    <p *ngIf="transaccionForm.get('type')?.invalid && transaccionForm.get('type')?.touched" class="text-danger">
+                        El tipo es requerido.
+                    </p>
+                </div>
+                <div class="form-group mb-3">
+                    <label class="d-block">
+                        <textarea class="form-control" placeholder="Descripción" formControlName="description"></textarea>
+                    </label>
+                    <p *ngIf="transaccionForm.get('description')?.invalid && transaccionForm.get('description')?.touched" class="text-danger">
+                        La descripción es requerida.
+                    </p>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label class="d-block">
+                        <select class="form-control" formControlName="accountId">
+                            <option value="" disabled>Selecciona una cuenta</option>
+                            <option [value]="account.id" *ngFor="let account of accountList">{{ account.name }}</option>
+                        </select>
+                    </label>
+                    <p *ngIf="transaccionForm.get('accountId')?.invalid && transaccionForm.get('accountId')?.touched" class="text-danger">
+                        Debes seleccionar una cuenta.
+                    </p>
+                </div>
+                <div class="form-group mb-3">
+                    <label class="d-block">
+                        <select class="form-control" formControlName="categoryId">
+                            <option value="" disabled>Selecciona una categoría</option>
+                            <option [value]="category.id" *ngFor="let category of categoryList">{{ category.name }}</option>
+                        </select>
+                    </label>
+                    <p *ngIf="transaccionForm.get('categoryId')?.invalid && transaccionForm.get('categoryId')?.touched" class="text-danger">
+                        Debes seleccionar una categoría.
+                    </p>
+                </div>
+                
+                <div class="form-group">
+                    <p *ngIf="showValidationAlert" class="text-danger">Debes completar todos los campos correctamente.</p>
+                    <div class="btn-group float-end">
+                        <button type="submit" class="btn-guardar btn btn-primary btn-raised">
+                            <span>Guardar</span>
+                        </button>
+                        <button type="button" class="btn btn-secondary" (click)="cancelarRegistro()">
+                            <span>Cancelar</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </fieldset>
+    </app-form-container>
+</div>
