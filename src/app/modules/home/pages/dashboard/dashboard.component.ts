@@ -149,6 +149,7 @@ export class DashboardComponent {
 
   editarTransaccion(id: string)
   {
+    this.router.navigate(['/home/formulario-actualizacion-transaccion'], { queryParams: { transactionId: id } });
   }
 
   realizarTransaccion(){

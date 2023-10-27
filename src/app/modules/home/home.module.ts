@@ -12,6 +12,7 @@ import { FormularioCuentaComponent } from './pages/formulario-cuenta/formulario-
 import { FormularioTransferenciaComponent } from './pages/formulario-transferencia/formulario-transferencia.component';
 import { BalanceFechaComponent } from './components/balance-fecha/balance-fecha.component';
 import { FiltroTransaccionComponent } from './components/filtro-transaccion/filtro-transaccion.component';
+import { FormularioActualizacionTransaccionComponent } from './pages/formulario-actualizacion-transaccion/formulario-actualizacion-transaccion.component';
 
 
 
@@ -24,6 +25,7 @@ import { FiltroTransaccionComponent } from './components/filtro-transaccion/filt
     FormularioTransferenciaComponent,
     BalanceFechaComponent,
     FiltroTransaccionComponent,
+    FormularioActualizacionTransaccionComponent,
   ],
   imports: [
     MatIconModule,

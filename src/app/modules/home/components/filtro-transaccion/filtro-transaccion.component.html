@@ -55,7 +55,7 @@
             >
             <div class="transaction-details">
                 <h2 class="transaction-ammount">Bs. {{ transaction.amount }}</h2>
-                <p class="transaction-type">Tipo: {{ transaction.type.toString() === "Income" ? "Ingreso" : "Gasto" }}</p>
+                <p class="transaction-type">Tipo: {{ transaction.type!.toString() === "Income" ? "Ingreso" : "Gasto" }}</p>
                 <p class="transaction-date">Fecha: {{ transaction.date }}</p>
                 <p class="transaction-description">Descripcion: {{ transaction.description }}</p>
                 <p class="transaction-cuenta" *ngIf="transaction.relatedTransaction!==null">Cuenta Relacionada: {{ transaction.relatedTransaction }}</p>

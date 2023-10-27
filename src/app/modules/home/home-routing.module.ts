@@ -5,6 +5,7 @@ import { FormularioTransaccionComponent } from './pages/formulario-transaccion/f
 import { FormularioCuentaComponent } from './pages/formulario-cuenta/formulario-cuenta.component';
 import { FormularioCategoriaComponent } from './pages/formulario-categoria/formulario-categoria.component';
 import { FormularioTransferenciaComponent } from './pages/formulario-transferencia/formulario-transferencia.component';
+import { FormularioActualizacionTransaccionComponent } from './pages/formulario-actualizacion-transaccion/formulario-actualizacion-transaccion.component';
 
 
 const routes: Routes = [
@@ -27,6 +28,10 @@ const routes: Routes = [
       {
         path: 'formulario-transferencia',
         component: FormularioTransferenciaComponent
+      },
+      {
+        path: 'formulario-actualizacion-transaccion',
+        component: FormularioActualizacionTransaccionComponent
       },
 
       {

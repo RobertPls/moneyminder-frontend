@@ -9,7 +9,6 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class TransactionService {
-
   private url = environment.url + "/Transaction";
 
   constructor(private http: HttpClient) { }
@@ -41,5 +40,47 @@ export class TransactionService {
       }
     };
     return this.http.delete<any>(this.url, options);
+  }
+
+  editTransaction
+    (transactionId: String, 
+    originAccountId: String, 
+    categoryId: String, 
+    date: Date, 
+    amount: Number, 
+    description: String, 
+    type: Number): 
+  Observable<any> {
+    const options = {
+      transactionId: transactionId,
+      originAccountId: originAccountId,
+      categoryId: categoryId,
+      date: date,
+      amount: amount,
+      description: description,
+      type: type
+    };
+    console.log(options)
+    return this.http.put<any>(this.url, options);
+  }
+  editTransference
+    (transactionId: String, 
+    originAccountId: String, 
+    destinationAccountId: String,  
+    date: Date, 
+    amount: Number): 
+  Observable<any> {
+    const options = {
+      transactionId: transactionId,
+      originAccountId: originAccountId,
+      destinationAccountId: destinationAccountId,
+      date: date,
+      amount: amount,
+      description:"Transference",
+      type: null,
+      categoryId:null,
+    };
+    console.log(options)
+    return this.http.put<any>(this.url, options);
   }
 }

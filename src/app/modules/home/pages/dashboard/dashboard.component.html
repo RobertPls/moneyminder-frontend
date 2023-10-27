@@ -33,10 +33,13 @@
             </div>
 
 
-
-            <h2 class="card-title mt-4">Cuentas
+            <div class="d-flex justify-content-between align-items-center">
+                <h2 class="card-title mt-4">
+                    Cuentas
+                </h2>
                 <button class="btn btn-primary btn-add" (click)="agregarCuenta()">Añadir cuenta</button>
-            </h2>
+            </div>
+            
 
             <div class="list col-12 mt-4">
                 <ul class="list-group">
@@ -63,9 +66,12 @@
                 </ul>
             </div>
 
-            <h2 class="card-title mt-4">Categorías
+            <div class="d-flex justify-content-between align-items-center">
+                <h2 class="card-title mt-4">
+                    Categorías
+                </h2>
                 <button class="btn btn-primary btn-add" (click)="agregarCategoria()">Añadir categoría</button>
-            </h2>
+            </div>
 
             <div class="list col-12 mt-4">
                 <ul class="list-group">
@@ -96,7 +102,7 @@
                     >
                     <div class="transaction-details">
                         <h2 class="transaction-ammount">Bs. {{ transaction.amount }}</h2>
-                        <p class="transaction-type">Tipo: {{ transaction.type.toString() === "Income" ? "Ingreso" : "Gasto" }}</p>
+                        <p class="transaction-type">Tipo: {{ transaction.type!.toString() === "Income" ? "Ingreso" : "Gasto" }}</p>
                         <p class="transaction-date">Fecha: {{ transaction.date }}</p>
                         <p class="transaction-description">Descripcion: {{ transaction.description }}</p>
                         <p class="transaction-cuenta" *ngIf="transaction.relatedTransaction!==null">Cuenta Relacionada: {{ transaction.relatedTransaction }}</p>
